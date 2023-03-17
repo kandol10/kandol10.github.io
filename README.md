@@ -1,3 +1,11 @@
+<style>
+@import "{{ site.theme }}";
+
+header {
+  display: none;
+}
+</style>
+
 <head>
   <title>Contact Us</title>
   <style>
