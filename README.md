@@ -1,11 +1,3 @@
-<style>
-@import "{{ site.theme }}";
-
-header {
-  display: none;
-}
-</style>
-
 <head>
   <title>Contact Us</title>
   <style>
@@ -35,17 +27,8 @@ header {
     .info span {
       font-weight: bold;
     }
-  </style>
-</head>
 
-
-<div class="topnav">
-  <a class="active" href="#home">Home</a>
-  <a href="#contact">Contact</a>
-</div>
-
-<style>
-  * {
+      * {
     background-color: black;
   }
 
@@ -80,8 +63,16 @@ header {
   zoom: 115%;
 }
 </style>
+  
+</head>
 
-<html>
+<body>
+
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a href="#contact">Contact</a>
+</div>
+
 
 <section id="home">
 <p style="text-align:center"><img src="picture1.jpg" alt="Logo"  width="310" height="300" ></p>
@@ -93,12 +84,10 @@ header {
 <p style = "
 font-weight: 50;color: white;
 width: 600px;    
-margin-left:  110px;         
+margin-left:  0px;         
 padding: 10px;    
 font-size: 20px;    
 font-family: arial;"
-
-
 
 > MyRew Property Ltd was founded in 2022, based in the West Midlands.
 
@@ -120,5 +109,7 @@ We are here to help. </p>
     <p style = "color: white"; class="info"><span>Phone:</span> 555-1234</p>
   </div>
 </section>
+
+</body>
 </html>
 
