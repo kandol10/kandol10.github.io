@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Symphony - Bespoke Crafted Cakes</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-pink: #FFB6C1;
+            --soft-pink: #FFDDE4;
+            --light-purple: #C8A2C8;
+            --cream: #FFF8E7;
+            --brown: #8B4513;
+            --dark-text: #333;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-text);
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 240, 245, 0.98) 100%);
+            backdrop-filter: blur(20px);
+            padding: 0.8rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-bottom: 1px solid rgba(255, 182, 193, 0.2);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--brown) 0%, var(--primary-pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo:hover .logo-img {
+            transform: rotate(10deg);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links li {
+            position: relative;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            padding: 0.8rem 1.2rem;
+            border-radius: 25px;
+            transition: all 0.3s;
+            position: relative;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-pink), var(--light-purple));
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-pink);
+            background: rgba(255, 182, 193, 0.1);
+        }
+        
+        .nav-links a:hover::before {
+            width: 30px;
+        }
+        
+        .nav-order-btn {
+            background: linear-gradient(135deg, var(--primary-pink), var(--light-purple));
+            color: white !important;
+            padding: 0.8rem 1.8rem !important;
+            border-radius: 25px;
+            font-weight: 600 !important;
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .nav-order-btn:hover {
+            background: linear-gradient(135deg, var(--light-purple), var(--primary-pink)) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 182, 193, 0.4);
+        }
+        
+        .nav-order-btn::before {
+            display: none;
+        }
+        
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 3px;
+            background: var(--brown);
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            margin-top: 70px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            z-index: 1;
+        }
+        
+        .hero-bg-left,
+        .hero-bg-right {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .hero-bg-left::after,
+        .hero-bg-right::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-content {
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+        }
+        
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: slideInUp 1s forwards 0.3s;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+        
+        .hero-content h2 {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: slideInUp 1s forwards 0.5s;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+            font-weight: 400;
+            letter-spacing: 3px;
+        }
+        
+        .hero-content p {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: slideInUp 1s forwards 0.7s;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+            font-weight: 400;
+            letter-spacing: 3px;
+        }
+        
+        .hero-content .bottom-text {
+            font-size: 1rem;
+            color: white;
+            margin-top: 3rem;
+            opacity: 0;
+            animation: slideInUp 1s forwards 1.1s;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+            letter-spacing: 1px;
+        }
+        
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+        }
+        
+        .cta-button {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--dark-text);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            opacity: 0;
+            animation: slideInUp 1s forwards 0.9s;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .cta-button:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Our Goodies Section */
+        .goodies-section {
+            padding: 5rem 2rem;
+            background: #FFD4E5;
+            position: relative;
+        }
+        
+        .section-header {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 5;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: var(--dark-text);
+            font-weight: 400;
+        }
+        
+        .goodies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .goodie-card {
+            background: rgba(255, 255, 255, 0.5);
+            border: 2px solid rgba(139, 69, 19, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+            position: relative;
+            padding: 1rem;
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .goodie-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(139, 69, 19, 0.5);
+            background: rgba(255, 255, 255, 0.7);
+        }
+        
+        .goodie-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .goodie-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .goodie-card:hover .goodie-image img {
+            transform: scale(1.05);
+        }
+        
+        .goodie-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            color: var(--dark-text);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+        
+        .goodie-description {
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: auto;
+            font-size: 0.95rem;
+            text-align: center;
+            padding: 0 1rem;
+        }
+        
+        .goodie-link {
+            color: var(--brown);
+            text-decoration: none;
+            font-size: 1.5rem;
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
+            transition: transform 0.3s;
+        }
+        
+        .goodie-link:hover {
+            transform: translateY(3px);
+        }
+        
+        .goodie-link:hover {
+            gap: 1rem;
+        }
+        
+        /* Delivery Section */
+        .delivery-section {
+            padding: 5rem 2rem;
+            background: #C8A8C8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+        }
+
+       
+        
+        
+        .delivery-content {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .delivery-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .delivery-cake-image {
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .delivery-text {
+            text-align: left;
+        }
+        
+        .delivery-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #333;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            font-weight: 400;
+        }
+
+                
+        /* Delivery Section */
+        .delivery-section1 {
+            padding: 5rem 2rem;
+            background: #c2dcff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+        }
+
+          .delivery-section1 {
+            padding: 5rem 2rem;
+            background: #c2dcff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+        }
+        
+        
+        .delivery-content1 {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .delivery-visual1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .delivery-cake-image {
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .delivery-text {
+            text-align: left;
+        }
+        
+        .delivery-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #333;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            font-weight: 400;
+        }
+        
+        
+        .order-button {
+            background: rgba(255, 255, 255, 0.8);
+            color: #333;
+            padding: 1rem 2rem;
+            border: 2px solid #333;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: none;
+        }
+        
+        .order-button:hover {
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Events Section */
+        .events-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #B3D9FF, var(--cream));
+            text-align: center;
+        }
+        
+        .events-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        
+        .events-container h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--brown);
+            margin-bottom: 1rem;
+        }
+        
+        .events-container h3 {
+            font-size: 1.8rem;
+            color: var(--dark-text);
+            margin-bottom: 2rem;
+        }
+        
+        .enquire-button {
+            background: linear-gradient(135deg, #B3D9FF, var(--light-purple));
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .enquire-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(179, 217, 255, 0.5);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--cream) 0%, #FFE5EC 100%);
+            position: relative;
+        }
+        
+        .contact-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .contact-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--brown);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+        
+        .contact-header p {
+            font-size: 1.2rem;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .contact-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        
+        .contact-left {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .contact-image-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .contact-showcase-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .image-overlay p {
+            font-size: 1.1rem;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+        
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--brown);
+            margin-bottom: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .contact-item:last-of-type {
+            border-bottom: none;
+        }
+        
+        .contact-icon {
+            font-size: 1.8rem;
+            color: var(--primary-pink);
+            background: rgba(255, 182, 193, 0.2);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            flex-shrink: 0;
+        }
+        
+        .contact-item strong {
+            display: block;
+            color: var(--brown);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .social-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #f0f0f0;
+        }
+        
+        .social-section p {
+            font-weight: 600;
+            color: var(--brown);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .social-link {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--light-purple));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.6rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+        
+        .social-link:hover::before {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px) rotate(5deg);
+            box-shadow: 0 15px 40px rgba(199, 162, 200, 0.4);
+        }
+        
+        .contact-right {
+            position: sticky;
+            top: 100px;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 182, 193, 0.05) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .contact-form h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--brown);
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        .form-subtitle {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+            position: relative;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-text);
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #f0f0f0;
+            border-radius: 12px;
+            font-family: inherit;
+            transition: all 0.3s;
+            background: #FAFAFA;
+            font-size: 0.95rem;
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #999;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-pink);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(255, 182, 193, 0.1);
+        }
+        
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.2em;
+            padding-right: 2.5rem;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .form-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .form-checkbox input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            cursor: pointer;
+            accent-color: var(--primary-pink);
+        }
+        
+        .form-checkbox label {
+            color: #666;
+            font-size: 0.9rem;
+            cursor: pointer;
+            line-height: 1.5;
+        }
+        
+        .submit-button {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-pink), var(--light-purple));
+            color: white;
+            padding: 1.2rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+        
+        .submit-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-50%) skewX(-45deg);
+            transition: left 0.5s;
+        }
+        
+        .submit-button:hover::before {
+            left: 100%;
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(199, 162, 200, 0.4);
+        }
+        
+        .button-icon {
+            font-size: 1.3rem;
+            transition: transform 0.3s;
+        }
+        
+        .submit-button:hover .button-icon {
+            transform: translateX(5px);
+        }
+        
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .form-note {
+            text-align: center;
+            color: #999;
+            font-size: 0.85rem;
+            margin-top: 1.5rem;
+            font-style: italic;
+            position: relative;
+        }
+        
+        /* Success/Error Messages */
+        .form-message {
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+        
+        .form-message.success {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #4caf50;
+        }
+        
+        .form-message.error {
+            background: #ffebee;
+            color: #c62828;
+            border: 1px solid #f44336;
+        }
+        
+        .form-message.show {
+            display: block;
+            animation: slideInDown 0.3s ease;
+        }
+        
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Logo Contact Section */
+        .logo-contact-section {
+            margin-top: 5rem;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #FFCCD5 0%, #FFB6C1 100%);
+            border-radius: 30px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .logo-contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .logo-left {
+            text-align: center;
+        }
+        
+        .logo-heading {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            color: white;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+        
+        .logo-circle {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto;
+            animation: float 6s ease-in-out infinite;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            border: 5px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .logo-main-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .logo-right {
+            padding: 2rem;
+        }
+        
+        .follow-text {
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 60px);
+            gap: 15px;
+            margin-bottom: 3rem;
+        }
+        
+        .social-box {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #333;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s;
+            border-radius: 8px;
+        }
+        
+        .social-box:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .detail-item {
+            color: #333;
+        }
+        
+        .detail-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .detail-value {
+            font-size: 0.95rem;
+            color: #333;
+            line-height: 1.4;
+        }
+        
+        @media (max-width: 768px) {
+            .logo-contact-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .social-grid {
+                justify-content: center;
+                margin: 0 auto 3rem;
+            }
+            
+            .logo-heading {
+                font-size: 2rem;
+            }
+            
+            .logo-circle {
+                width: 200px;
+                height: 200px;
+            }
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-text);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-text {
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .delivery-content,
+            .delivery-content1,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .delivery-visual,
+            .delivery-visual1 {
+                display: none;
+            }
+            
+            .contact-header h2 {
+                font-size: 2.5rem;
+            }
+            
+            .contact-left {
+                order: 2;
+            }
+            
+            .contact-right {
+                order: 1;
+                position: static;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-showcase-image {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <img src="IMG_0735.JPG" alt="Sweet Symphony Logo" class="logo-img">
+                <span class="logo-text">Sweet Symphony</span>
+            </a>
+            <button class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#goodies">Our Goodies</a></li>
+                <li><a href="#delivery">Delivery</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" class="nav-order-btn">Order Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-background">
+            <div class="hero-bg-left" style="background-image: url('IMG_0731.JPG')"></div>
+            <div class="hero-bg-right" style="background-image: url('IMG_0734.JPG')"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Sweet Symphony</h1>
+            <h2>BESPOKE CRAFTED</h2>
+            <p>DELIVERED ANYWHERE</p>
+            <a href="#contact" class="cta-button">ORDER NOW</a>
+            <p class="bottom-text">See our wonderful creations below</p>
+        </div>
+    </section>
+
+    <!-- Our Goodies Section -->
+    <section id="goodies" class="goodies-section">
+        <div class="goodies-grid">
+            <div class="goodie-card">
+                <div class="goodie-image">
+                    <img src="4.png" alt="Custom Cakes">
+                </div>
+                <h3 class="goodie-title">CAKES</h3>
+                <p class="goodie-description">Choose from our selection of amazing homemade cakes</p>
+                <a href="#contact" class="goodie-link">↓</a>
+            </div>
+            
+            <div class="goodie-card">
+                <div class="goodie-image">
+                    <img src="5.png" alt="Cakesicles">
+                </div>
+                <h3 class="goodie-title">CAKESICLES</h3>
+                <p class="goodie-description">Dipped in smooth chocolate and decorated to perfection</p>
+                <a href="#contact" class="goodie-link">↓</a>
+            </div>
+            
+            <div class="goodie-card">
+                <div class="goodie-image">
+                    <img src="6.png" alt="Custom Events">
+                </div>
+                <h3 class="goodie-title">CUSTOM EVENTS</h3>
+                <p class="goodie-description">Sweet creations for every celebration</p>
+                <a href="#events" class="goodie-link">↓</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Section -->
+    <section id="delivery" class="delivery-section">
+        <div class="delivery-content">
+            <div class="delivery-visual">
+                <img src="2.png" alt="Vintage Wedding Cake" class="delivery-cake-image">
+            </div>
+            <div class="delivery-text">
+                <h2>We deliver<br>anywhere!</h2>
+                <button class="order-button" onclick="location.href='#contact'">Click here for the order form</button>
+            </div>
+        </div>
+    </section>
+
+        <!-- Delivery Section -->
+    <section id="delivery" class="delivery-section" style = "background:#c2dcff">
+        <div class="delivery-content">
+                <div class="delivery-text" style = "text-align: center;">
+                <h2>Caterting Torwards<br>Events!</h2>
+                <button class="order-button" onclick="location.href='#contact'">Click here for the order form</button>
+            </div>
+            <div class="delivery-visual">
+                <img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?w=500&h=500&fit=crop" alt="Vintage Wedding Cake" class="delivery-cake-image">
+            </div>
+        
+        </div>
+    </section>
+
+
+    <!-- Events Section -->
+    <section id="events" class="events-section">
+        <div class="events-container">
+            <h2>Catering</h2>
+            <h3>Towards Events</h3>
+            <p style="margin-bottom: 2rem; color: #666;">Make your special occasion unforgettable with our custom dessert catering services. From weddings to corporate events, we'll create the perfect sweet symphony for your celebration.</p>
+            <button class="enquire-button" onclick="location.href='#contact'">Enquire</button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="contact-header">
+            <h2>Let's Create Your Sweet Symphony</h2>
+            <p>Every cake tells a story. Let us help write yours.</p>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-left">
+                <div class="contact-image-container">
+                    <img src="https://images.unsplash.com/photo-1558636508-e0db3814bd1d?w=600&h=800&fit=crop" alt="Beautiful decorated cake" class="contact-showcase-image">
+                    <div class="image-overlay">
+                        <p>Handcrafted with love in Birmingham</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <div>
+                            <strong>VISIT OUR BAKERY</strong><br>
+                            61 Alum Rock, Birmingham, England, B8 1LY
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <div>
+                            <strong>CALL US</strong><br>
+                            07517 523 371
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <span class="contact-icon">⏰</span>
+                        <div>
+                            <strong>OPENING HOURS</strong><br>
+                            Mon-Fri: 9am - 6pm<br>
+                            Sat: 10am - 5pm<br>
+                            Sun: By appointment only
+                        </div>
+                    </div>
+                    
+                    <div class="social-section">
+                        <p>FOLLOW OUR SWEET JOURNEY</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link" title="Instagram">📷</a>
+                            <a href="#" class="social-link" title="YouTube">▶️</a>
+                            <a href="#" class="social-link" title="Facebook">f</a>
+                            <a href="#" class="social-link" title="WhatsApp">💬</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-right">
+                <form class="contact-form" id="orderForm">
+                    <div class="form-message" id="formMessage"></div>
+                    
+                    <h3>Send Us Your Sweet Request</h3>
+                    <p class="form-subtitle">Tell us about your dream cake and we'll make it happen!</p>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Your Name *</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="07XXX XXX XXX">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="event-date">Event Date</label>
+                            <input type="date" id="event-date" name="event-date">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cake-type">Cake Type</label>
+                            <select id="cake-type" name="cake-type">
+                                <option value="">Select a cake type...</option>
+                                <option value="Birthday Cake">Birthday Cake</option>
+                                <option value="Wedding Cake">Wedding Cake</option>
+                                <option value="Anniversary Cake">Anniversary Cake</option>
+                                <option value="Custom Design">Custom Design</option>
+                                <option value="Cupcakes">Cupcakes</option>
+                                <option value="Cakesicles">Cakesicles</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="servings">Number of Servings</label>
+                            <input type="text" id="servings" name="servings" placeholder="e.g., 50 people">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="flavors">Preferred Flavors</label>
+                        <input type="text" id="flavors" name="flavors" placeholder="e.g., Vanilla, Chocolate, Red Velvet...">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Tell Us More About Your Vision *</label>
+                        <textarea id="message" name="message" placeholder="Describe your dream cake - colors, theme, design ideas, special requests..." required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="budget">Budget Range</label>
+                            <select id="budget" name="budget">
+                                <option value="">Select budget...</option>
+                                <option value="Under £100">Under £100</option>
+                                <option value="£100-250">£100-250</option>
+                                <option value="£250-500">£250-500</option>
+                                <option value="£500-750">£500-750</option>
+                                <option value="£750-1000">£750-1000</option>
+                                <option value="Over £1000">Over £1000</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="delivery">Delivery Required?</label>
+                            <select id="delivery" name="delivery">
+                                <option value="no">No - I'll collect</option>
+                                <option value="yes">Yes - Please deliver</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" id="delivery-address-group" style="display: none;">
+                        <label for="delivery-address">Delivery Address</label>
+                        <textarea id="delivery-address" name="delivery-address" placeholder="Full delivery address including postcode..."></textarea>
+                    </div>
+                    
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="newsletter" name="newsletter">
+                        <label for="newsletter">I'd like to receive updates about special offers and new creations</label>
+                    </div>
+                    
+                    <button type="submit" class="submit-button" id="submitBtn">
+                        <span>Send Sweet Request</span>
+                        <span class="button-icon">→</span>
+                    </button>
+                    
+                    <p class="form-note">* Required fields. We'll respond within 24 hours!</p>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Logo Section -->
+        <div class="logo-contact-section">
+            <div class="logo-contact-container">
+                <div class="logo-left">
+                    <h2 class="logo-heading">lets find your<br>sweet symphony.</h2>
+                    <div class="logo-circle">
+                        <img src="https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=300&h=300&fit=crop" alt="Sweet Symphony Logo" class="logo-main-img">
+                    </div>
+                </div>
+                
+                <div class="logo-right">
+                    <p class="follow-text">FOLLOW US ON SOCIAL MEDIA</p>
+                    
+                    <div class="social-grid">
+                        <a href="#" class="social-box instagram">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-box youtube">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-box facebook">
+                            <span style="font-size: 24px; font-weight: bold;">f</span>
+                        </a>
+                        <a href="#" class="social-box messenger">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2C6.48 2 2 6.48 2 12c0 2.85 1.22 5.41 3.16 7.21L4 22l3.5-1.16C9.12 21.58 10.52 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"></path>
+                                <path d="M8 12l3 3 5-5"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <div class="contact-details">
+                        <div class="detail-item">
+                            <p class="detail-label">ADDRESS</p>
+                            <p class="detail-value">61 Alum Rock, Birmingham, England, B8 1LY</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <p class="detail-label">PHONE NUMBER</p>
+                            <p class="detail-value">07517 523 371</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">Sweet Symphony</div>
+        <p class="footer-text">© 2024 Sweet Symphony. All rights reserved.</p>
+        <p class="footer-text">Bespoke Crafted • Delivered Anywhere</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                
+                // Animate hamburger menu
+                const spans = this.querySelectorAll('span');
+                if (navLinks.classList.contains('active')) {
+                    spans[0].style.transform = 'rotate(45deg) translateY(8px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translateY(-8px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+            
+            // Close menu when clicking a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    const spans = mobileMenuBtn.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                });
+            });
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Show/hide delivery address field
+        const deliverySelect = document.getElementById('delivery');
+        const deliveryAddressGroup = document.getElementById('delivery-address-group');
+        
+        deliverySelect.addEventListener('change', function() {
+            if (this.value === 'yes') {
+                deliveryAddressGroup.style.display = 'block';
+            } else {
+                deliveryAddressGroup.style.display = 'none';
+            }
+        });
+
+        // Form submission to Google Apps Script
+        document.getElementById('orderForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const formMessage = document.getElementById('formMessage');
+            
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>Sending...</span>';
+            
+            // Collect form data
+            const formData = {
+                fullName: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                eventDate: document.getElementById('event-date').value,
+                cakeType: document.getElementById('cake-type').value,
+                servings: document.getElementById('servings').value,
+                flavors: document.getElementById('flavors').value,
+                design: document.getElementById('message').value,
+                specialRequests: document.getElementById('message').value,
+                budget: document.getElementById('budget').value,
+                deliveryRequired: document.getElementById('delivery').value === 'yes',
+                deliveryAddress: document.getElementById('delivery-address').value,
+                newsletter: document.getElementById('newsletter').checked,
+                timestamp: new Date().toISOString(),
+                websiteUrl: window.location.href,
+                referralSource: 'Website Contact Form'
+            };
+            
+            try {
+                // Send to Google Apps Script
+                const response = await fetch('https://script.google.com/macros/s/AKfycbwtPCBweE-jGm9xydpRHixHxVDH0LP1C28BKWTJENqdV21G9VhaZdzPPbnWBTTHda2x/exec', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                // Show success message
+                formMessage.className = 'form-message success show';
+                formMessage.innerHTML = '🎉 Thank you for your order! We\'ll contact you within 24 hours to discuss your sweet creation.';
+                
+                // Reset form
+                this.reset();
+                document.getElementById('delivery-address-group').style.display = 'none';
+                
+                // Scroll to message
+                formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+            } catch (error) {
+                // Show error message
+                formMessage.className = 'form-message error show';
+                formMessage.innerHTML = '❌ Sorry, something went wrong. Please try again or call us at 07517 523 371.';
+                console.error('Error:', error);
+            } finally {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span>Send Sweet Request</span><span class="button-icon">→</span>';
+                
+                // Hide message after 10 seconds
+                setTimeout(() => {
+                    formMessage.classList.remove('show');
+                }, 10000);
+            }
+        });
+    </script>
+</body>
+</html>
